@@ -182,10 +182,6 @@ END;
     
     
 }
-$a = new AlertToGroup();
-$a->printGroupsCheckbox();
-$a->printAlerts();
-$a->proccessInput();
 
 
 

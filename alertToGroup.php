@@ -10,7 +10,13 @@
 
 <?php
     require "alertToGroupH.php";
+    $a = new AlertToGroup();
+    
+   
+    $a->printAlerts();
+    $a->printGroupsCheckbox();
 
+    
 
 ?>
 

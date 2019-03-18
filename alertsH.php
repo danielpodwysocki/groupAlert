@@ -37,12 +37,20 @@ class Alert{
 class sendAlert{
     private $dbh;
     private $alerts;
+    private $location;
     public function __construct(){
-        require "dblogin.php";
-        $this->dbh = new PDO("mysql:dbname=$db;host=$sv",$un,$pw);
-        $this->getData();
+        try{
+                
+            if(!isset($_GET['location']))throw new Exception('noLocationGiven');
+            $this->location=$_GET['location'];
+            require "dblogin.php";
+            $this->dbh = new PDO("mysql:dbname=$db;host=$sv",$un,$pw);
+            $this->getData();
+            
+        }catch(Exception $e){
+            echo $e->getMessage();
+        }
     }
-    
     public function getData(){
         ///////////////////////////////////////////////
         $result = $this->dbh->query("SELECT id,alertContent FROM Alerts");
@@ -55,21 +63,23 @@ class sendAlert{
     }
     public function printAlerts(){
         echo "<form method='post' action='sendAlert.php'><div id='checkboxes'>";
+        echo "<input type='hidden' name='location' value='$this->location'>";
         foreach($this->alerts as $a){
             $aID=$a->getID();
             $alert=$a->getAlert();
-            echo "<input type='checkbox' name='alert$aID' id=$aID>";
+            echo "<input type='checkbox' name='alert$aID' id='$aID'>";
             echo "<label class='alertLabel' for='$aID'>$alert</label>";
             
         }
-        echo "</div></form>";
+        echo "<input type='submit'>
+        </div></form>";
     }
     
 };
 
 
 
-$a = new sendAlert();
+
 
 
 
