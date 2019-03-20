@@ -14,6 +14,7 @@ try{
     $dbh = new PDO("mysql:dbname=$db;host=$sv",$un,$pw);
     $stmt = $dbh->prepare("INSERT INTO Alerts(alertContent) VALUES(?)");
     $stmt->execute(array($_POST["alertContent"]));
+    throw new Exception('done');
     
     
     

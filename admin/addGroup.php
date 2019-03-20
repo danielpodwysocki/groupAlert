@@ -16,7 +16,7 @@ try{
     $dbh = new PDO("mysql:dbname=$db;host=$sv",$un,$pw);
     $stmt = $dbh->prepare("INSERT INTO Groups(name) VALUES(?)");
     $stmt->execute(array($_POST['name']));
-    
+    throw new Exception('done');
     
     
     
