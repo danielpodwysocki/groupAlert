@@ -1,3 +1,7 @@
 <?php 
-echo date('d-m-Y h:m');
+    
 ?>
+
+<form method='get' action='alerts.php'>
+	<input type='submit' name='location' value='maszyna1'/>
+</form>

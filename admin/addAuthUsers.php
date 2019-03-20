@@ -24,9 +24,8 @@ try{
     }
 
     if(!isset($_POST['login'],$_POST['pass'])) throw new Exception("badInput");
-    
-    
-    require 'dblogin.php';
+
+    require '../dblogin.php';
     $dbh = new PDO("mysql:dbname=$db;host=$sv",$un,$pw);
     $stmt = $dbh->prepare("INSERT INTO AuthUsers(login,passHash) VALUES(?,?)");
     $stmt->execute(array($_POST['login'],password_hash($_POST['pass'], PASSWORD_BCRYPT)));

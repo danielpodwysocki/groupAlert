@@ -85,7 +85,7 @@ class AlertToGroup{
                 throw new Exception("notLoggedIn");
             }
             session_regenerate_id();
-            require_once 'dblogin.php';
+            require_once '../dblogin.php';
             $this->dbh = new PDO("mysql:dbname=$db;host=$sv",$un,$pw);
             $this->getData();
             $this->proccessInput();
@@ -110,12 +110,12 @@ class AlertToGroup{
         
     }
     public function printGroupsCheckbox() {
-        echo "<form method='get' action=#>";
+        echo "<form method='post' action=#>";
         foreach($this->alerts as $a){
             $x=$a->getID();
             $a->listCheckboxes($this->groups);
         }
-        echo "<input type='submit'/>";
+        echo "<input id='assignSubmit' type='submit' value='Assign'/>";
         echo "</form>";
         print <<<END
         <script>
@@ -130,7 +130,7 @@ END;
         foreach($this->alerts as $a){
             $id=$a->getID();
             $alert=$a->getAlert();
-            echo "<li class='alert$id'>$alert</li>";
+            echo "<li class='alert$id liToggle'>$alert</li>";
             echo <<<END
                 <script>
                     $(".alert$id").click(function(){
@@ -153,8 +153,8 @@ END;
             foreach($this->alerts as $a){
                 foreach($this->groups as $g)
                 {
-                    if(!empty($_GET)){
-                        $arr=$_GET['addGroup'];
+                    if(!empty($_POST)){
+                        $arr=$_POST['addGroup'];
                         if(isset($arr[$a->getID()][$g[0]])){ // sprawdzamy czy id danej grupy jest zaznaczone
                             if(!$a->isInGroup($g[0])){
                                 $aID=$a->getID();

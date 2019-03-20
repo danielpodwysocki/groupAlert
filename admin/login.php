@@ -1,23 +1,11 @@
-<html>
-<head>
-	<meta charset="utf-8"/>
-</head>
-<body>
-<form method="POST" action="#">
-	<input type="text" name="login"/>
-	<input type="password" name="pass"/>
-	<input type="submit"/>
-</form>
 
-</body>
-</html>
 <?php
 try{
     
     
     ///
     if(!isset($_POST['login'],$_POST['pass'])) throw new Exception("badInput");
-    require 'dblogin.php';
+    require '../dblogin.php';
     $dbh = new PDO("mysql:dbname=$db;host=$sv",$un,$pw);
     $login=$_POST['login'];
     
@@ -32,15 +20,30 @@ try{
         $stmt->execute(array($login));
         $res=$stmt->fetch();
         $_SESSION['uid']=$res[0];
+        require 'alertsRedirect.php';
         
-        echo "luks, zalogowany";
+        
     }
     else throw new Exception("wrongPass");
     
     
     
+    
 }catch(Exception $e){
-    echo $e->getMessage();
+    require '../header.php';
+    echo <<<END
+
+        <div class='formCont'>
+            <form method="POST" action="#">
+            Login
+            <input type="text" name="login"/>
+            Password
+            <input type="password" name="pass"/> 
+            <input type="submit" value='Log in'/>
+            </form>
+        </div>
+END;
+    require '../footer.php';
 }
 
 ?>

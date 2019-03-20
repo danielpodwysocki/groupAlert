@@ -62,7 +62,9 @@ class sendAlert{
         }      
     }
     public function printAlerts(){
-        echo "<form method='post' action='sendAlert.php'><div id='checkboxes'>";
+        echo "<form method='GET' action='sendAlert.php'>
+                <div id='checkboxes'>";
+             
         echo "<input type='hidden' name='location' value='$this->location'>";
         foreach($this->alerts as $a){
             $aID=$a->getID();
@@ -71,7 +73,7 @@ class sendAlert{
             echo "<label class='alertLabel' for='$aID'>$alert</label>";
             
         }
-        echo "<input type='submit'>
+        echo "<input id='alertSubmit' type='submit' value='Zgłoś'>
         </div></form>";
     }
     

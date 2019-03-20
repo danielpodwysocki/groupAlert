@@ -1,15 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset='utf-8'/>
-	<link rel='stylesheet' href='alerts.css'/>
-</head>
-<body>
+
 	<?php
-	require "alertsH.php";
-    $a = new sendAlert;
-    $a->printAlerts();
+	   require "header.php";
 	
+	   require "alertsH.php";
+    
+
 	?>
-</body>
-</html>
+	<div class="alertCont">
+		<?php 
+		$a = new sendAlert;
+		$a->printAlerts();
+		
+		?>	
+		
+	</div>
+	<?php 
+	   require "footer.php";
+	?>	
+
