@@ -48,7 +48,7 @@ function sendAlert($id,$dbh,$alertContent,$location){
             $q = $dbh->query("SELECT mail,phoneNumber FROM Users WHERE id=$u[0]");
             $res = $q->fetch();
             $time = date('d-m-Y H:i');
-            $message = "'Nastapilo zdarzenie: $alertContent na stanowisku: $location zdarzylo sie to $time'";
+            $message = "'Nastapilo zdarzenie: $alertContent Lokalizacja: $location Data zgłoszenia: $time'";
             
             
             $command = escapeshellcmd("python3 /opt/lampp/htdocs/groupAlert/mail.py $message $res[0]");
