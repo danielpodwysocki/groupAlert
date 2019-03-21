@@ -1,0 +1,2 @@
+$token in sendAlert.php must be changed to your smsapi token.
+Same with your mail login and pass, same file
