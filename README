@@ -1,2 +1,3 @@
 $token in sendAlert.php must be changed to your smsapi token.
-Same with your mail login and pass, same file
+Same with your mail login and pass, file mail.py
+you need python3 installed for mails to work
