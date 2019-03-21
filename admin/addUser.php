@@ -13,12 +13,24 @@ try{
         session_destroy();
         throw new Exception("notLoggedIn");
     }
-    if(!isset($_POST['mail'],$_POST['phoneNumber'])) throw new Exception("badInput");
+    if(!isset($_POST['mail'])) throw new Exception("badInput");
     
     require '../dblogin.php';
     $dbh = new PDO("mysql:dbname=$db;host=$sv",$un,$pw);
-    $stmt = $dbh->prepare("INSERT INTO Users(mail,phoneNumber) VALUES(?,?)");
-    $stmt->execute(array($_POST['mail'],$_POST['phoneNumber']));
+    $stmt = $dbh->prepare("INSERT INTO Users(mail,phoneNumber,sendSms) VALUES(?,?,?)");
+
+    $sendSms=TRUE;
+    $phoneNumber="";
+    if(empty($_POST['phoneNumber'])){
+        $sendSms=FALSE;
+    }
+    else{
+        $phoneNumber=$_POST['phoneNumber'];
+    }
+    
+ 
+
+    $stmt->execute(array($_POST['mail'],$phoneNumber,$sendSms));
     throw new Exception('done');
     
     

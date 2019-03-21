@@ -45,7 +45,7 @@ function sendAlert($id,$dbh,$alertContent,$location){
         $users = $res2->fetchAll();
 
         foreach($users as $u){
-            $q = $dbh->query("SELECT mail,phoneNumber FROM Users WHERE id=$u[0]");
+            $q = $dbh->query("SELECT mail,phoneNumber,sendSms FROM Users WHERE id=$u[0]");
             $res = $q->fetch();
             $time = date('d-m-Y H:i');
             $message = "'Nastapilo zdarzenie: $alertContent Lokalizacja: $location Data zgłoszenia: $time'";
@@ -66,7 +66,7 @@ function sendAlert($id,$dbh,$alertContent,$location){
             );
             
             $token ="";
-            
+            if(res[2])sms_send($params, $token);
             
             
         }
