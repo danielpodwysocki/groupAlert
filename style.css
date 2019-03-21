@@ -108,6 +108,10 @@ span {
 	
 }
 
+
+
+
+
 .assignCont{
 	margin-top:10vw;
 	margin-left:30vw;
@@ -134,9 +138,7 @@ span {
 	float:left;
 
 }
-.assignTwo{
-	
-}
+
 
 #assignSubmit{
 		width:8vw;
@@ -150,5 +152,10 @@ span {
 	color:green;
 }
 
+.checkboxCont{
+	margin-top:10vw;
+	margin-left:30vw;
+	width:40vw;
+}
 
 

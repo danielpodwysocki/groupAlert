@@ -167,7 +167,7 @@ END;
             }
             
         }catch(Exception $e){
-            echo 'xd';
+            echo $e->getMessage();
         }
     }
     
