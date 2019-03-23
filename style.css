@@ -17,7 +17,7 @@ a{
 
 header{
 	background:#9ec3ff;
-	height:4vw;
+	min-height:4vw;
 	width:100%;
 }
 
@@ -37,7 +37,7 @@ header ul {
 
 }
 
-header li {
+header .headerItem {
 	font-family: 'ZCOOL XiaoWei', serif;
   	float: left;
   	margin-left:2vw;
@@ -54,10 +54,10 @@ header li {
 
 .alertLabel{
 	float:left;
-    background-color: green;
+    background-color: #34344A;
     display: inline-block;
     width: 14vw;
-    height:14vw;
+    height:7.5vw;
     text-align:center;
     font-size: 2vw;
 	border:0.4vw white dashed;
@@ -75,7 +75,7 @@ header li {
 
 
 #checkboxes input[type=checkbox]:checked + .alertLabel{
-    background-color: red;
+    background-color: #FFC20D;
 	transition: 1s;
 }
 
@@ -158,4 +158,11 @@ span {
 	width:40vw;
 }
 
+ul.dropdownMenu{
+	display:none;
+}
+
+.dropdownMenu li a{
+	float:left;
+}
 

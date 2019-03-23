@@ -73,7 +73,7 @@ class sendAlert{
             echo "<label class='alertLabel' for='$aID'>$alert</label>";
             
         }
-        echo "<input id='alertSubmit' type='submit' value='Zgłoś'>
+        echo "<input id='alertSubmit' class='button button***REMOVED***winona button***REMOVED***border-thin button***REMOVED***round-s' type='submit' value='Zgłoś'>
         </div></form>";
     }
     

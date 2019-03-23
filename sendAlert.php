@@ -85,7 +85,7 @@ try{
     $result = $dbh->query("SELECT id,alertContent FROM Alerts");
     $alerts=$result->fetchAll();
     $location = $_GET['location'];
-    
+     
     foreach($alerts as $a){
         $id = $a['id'];
         if(!empty($_GET["alert$id"])) sendAlert($id,$dbh,$a['alertContent'],$location);
