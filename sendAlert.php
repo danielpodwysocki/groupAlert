@@ -48,12 +48,13 @@ function sendAlert($id,$dbh,$alertContent,$location){
             $q = $dbh->query("SELECT mail,phoneNumber,sendSms FROM Users WHERE id=$u[0]");
             $res = $q->fetch();
             $time = date('d-m-Y H:i');
-            $message = "'Nastapilo zdarzenie: $alertContent Lokalizacja: $location Data zgłoszenia: $time'";
+            $message = "'Nastapilo zdarzenie: $alertContent Lokalizacja: $location Data zgloszenia: $time'";
             
             
             $command = escapeshellcmd("python3 /opt/lampp/htdocs/groupAlert/mail.py $message $res[0]");
+
             shell_exec($command);
-            
+
           /*  $params = array(
                 'to' => $res[1], //numery odbiorców rozdzielone przecinkami
                 'from' => 'budvarAlerts', //pole nadawcy
@@ -65,8 +66,9 @@ function sendAlert($id,$dbh,$alertContent,$location){
                 'message' => $message //treść wiadomości
             );
             
-            $token ="";
-            if(res[2])sms_send($params, $token);
+            $token ="SD05ELM7TdRAd8gztHO9Xw0b0u4Lcw7XyqQIUfZ9";
+
+            if($res[2])sms_send($params, $token);
             
             
         }
@@ -88,7 +90,8 @@ try{
      
     foreach($alerts as $a){
         $id = $a['id'];
-        if(!empty($_GET["alert$id"])) sendAlert($id,$dbh,$a['alertContent'],$location);
+            if(!empty($_GET["alert$id"])) sendAlert($id,$dbh,$a['alertContent'],$location);
+        
     }
     
     
