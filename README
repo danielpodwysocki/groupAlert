@@ -1,3 +1,11 @@
-$token in sendAlert.php must be changed to your smsapi token.
-Same with your mail login and pass, file mail.py
-you need python3 installed for mails to work
+The purpose of this project is to send e-mail and sms alerts from locations specified by a get parameter. It is functional,
+however I wouldn't use it if you think that you might need to update it since this project is pretty much abandoned
+due to it being a very early effort of mine. Because of that the quality of code is really lacking and navigating it
+would be difficult. It would honestly be easier for me to re-write this app rather than update it.
+
+If I didn't manage to scare you off and you want to try it anyways, here's information you might need:
+  $token in sendAlert.php must be changed to your smsapi token.
+  Same with your mail login and pass, file mail.py
+  you need python3 installed for mails to work
+  the name of the location from which the alert is being sent is specified by the location GET param, so an example
+  URL might look something like that: /alerts?location=machine1
