@@ -9,3 +9,8 @@ If I didn't manage to scare you off and you want to try it anyways, here's infor
   you need python3 installed for mails to work
   the name of the location from which the alert is being sent is specified by the location GET param, so an example
   URL might look something like that: /alerts?location=machine1
+  You need to manually create a database entry for the admin account. The password hashing
+  algo is Bcrypt (I believe it's 9 rounds, but you can find it in PHP docs).
+
+If you really need such a project and can't get  feel free to contact me - I could help you with getting it running.
+However, as mentioned there won't be any updates to this, since the codebase would be a nightmare to work with.
